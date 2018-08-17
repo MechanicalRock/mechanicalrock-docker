@@ -1,0 +1,66 @@
+version: '3'
+services:
+  aws:
+      build:
+        context: aws-cli
+        dockerfile: Dockerfile
+      image: mechanicalrock/docker-aws-cli
+      entrypoint: aws
+      environment:
+        - AWS_ACCESS_KEY_ID
+        - AWS_SECRET_ACCESS_KEY
+        - AWS_PROFILE
+        - AWS_SESSION_TOKEN
+        - AWS_SECURITY_TOKEN
+      volumes:
+        - ${PWD}:/app
+        - ~/.aws:/root/.aws
+        - ~/.ssh:/root/.ssh
+  aws:
+      build:
+        context: aws-cli
+        dockerfile: Dockerfile
+      image: mechanicalrock/docker-aws-cli
+      entrypoint: aws
+      environment:
+        - AWS_ACCESS_KEY_ID
+        - AWS_SECRET_ACCESS_KEY
+        - AWS_PROFILE
+        - AWS_SESSION_TOKEN
+        - AWS_SECURITY_TOKEN
+      volumes:
+        - ${PWD}:/app
+        - ~/.aws:/root/.aws
+        - ~/.ssh:/root/.ssh
+  cfn-lint:
+      build:
+        context: cfn-lint
+        dockerfile: Dockerfile
+      image: mechanicalrock/docker-cfn-lint
+      entrypoint: cfn-lint
+      environment:
+        - AWS_ACCESS_KEY_ID
+        - AWS_SECRET_ACCESS_KEY
+        - AWS_PROFILE
+        - AWS_SESSION_TOKEN
+        - AWS_SECURITY_TOKEN
+      volumes:
+        - ${PWD}:/app
+        - ~/.aws:/root/.aws
+        - ~/.ssh:/root/.ssh
+  npm:
+      build:
+        context: npm
+        dockerfile: Dockerfile
+      working_dir: /app
+      image: mechanicalrock/docker-npm:8.10
+      volumes:
+        - ${PWD}:/app
+        - ~/.aws/:/root/.aws
+        - ~/.ssh:/root/.ssh
+      environment:
+        - AWS_ACCESS_KEY_ID
+        - AWS_SECRET_ACCESS_KEY
+        - AWS_PROFILE
+        - AWS_SESSION_TOKEN
+        - AWS_SECURITY_TOKEN
