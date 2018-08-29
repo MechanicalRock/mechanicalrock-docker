@@ -64,3 +64,20 @@ services:
         - AWS_PROFILE
         - AWS_SESSION_TOKEN
         - AWS_SECURITY_TOKEN
+  psql:
+    image: postgres:9.6.7
+    environment:
+      - PG_USER
+      - PG_PASSWORD
+    entrypoint:
+        - psql 
+        - -h 
+        - host.docker.internal
+  mosh:
+    build:
+        context: mosh
+        dockerfile: Dockerfile
+    working_dir: /app
+    image: mechanicalrock/docker-mosh
+    volumes:
+      - ~/.ssh:/root/.ssh
