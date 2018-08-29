@@ -1,0 +1,12 @@
+stevejpurves.cucumber
+steoates.autoimport
+rid9.datetime
+PeterJausovec.vscode-docker
+Orta.vscode-jest
+christian-kohler.path-intellisense
+robinbentley.sass-indented
+sasa.vscode-sass-format
+eg2.tslint
+robertohuertasm.vscode-icons
+IBM.output-colorizer
+christian-kohler.npm-intellisense

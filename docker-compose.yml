@@ -81,3 +81,13 @@ services:
     image: mechanicalrock/docker-mosh
     volumes:
       - ~/.ssh:/root/.ssh
+  vscode:
+    build:
+      context: vscode
+      dockerfile: Dockerfile
+    environment:
+      - DISPLAY=$DISPLAY
+      - USER=dev
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - .:/home/dev/workspace
