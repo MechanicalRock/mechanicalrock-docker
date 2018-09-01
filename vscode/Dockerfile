@@ -1,10 +1,11 @@
 FROM ubuntu
 
 ENV USER=dev
-ENV GROUP=developers
+# ENV GROUP=developers
 
-RUN groupadd $GROUP
-RUN useradd -m -G $GROUP $USER
+# RUN groupadd $GROUP
+# RUN useradd -m -G $GROUP $USER
+RUN useradd -m $USER
 
 RUN apt-get update \
  && apt-get install -y curl apt-transport-https libgtk2.0-0 libxss1 libasound2 xauth x11-apps dbus git gpg
@@ -38,6 +39,8 @@ ADD extensions.txt .
 
 RUN for extension in `cat extensions.txt`; do /usr/bin/code --install-extension $extension; done;
 
+VOLUME /vscode-data
+
 WORKDIR /home/$USER/workspace
 
-ENTRYPOINT ["/usr/bin/code", "--verbose"]
+ENTRYPOINT ["/usr/bin/code", "--verbose", "--user-data-dir", "/vscode-data"]
