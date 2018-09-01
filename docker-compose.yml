@@ -91,5 +91,18 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - .:/home/dev/workspace
+      - ~/.vscode:/vscode-data
     command: 
       - /home/dev/workspace
+  slack:
+    build:
+      context: slack
+      dockerfile: Dockerfile
+    environment:
+      - DISPLAY=$DISPLAY
+      - USER=dev
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      # - .:/home/dev/workspace
+    # command: 
+      # - /home/dev/workspace
