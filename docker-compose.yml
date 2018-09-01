@@ -91,3 +91,5 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - .:/home/dev/workspace
+    command: 
+      - /home/dev/workspace

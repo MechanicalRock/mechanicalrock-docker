@@ -40,4 +40,4 @@ RUN for extension in `cat extensions.txt`; do /usr/bin/code --install-extension 
 
 WORKDIR /home/$USER/workspace
 
-ENTRYPOINT /usr/bin/code --verbose
+ENTRYPOINT ["/usr/bin/code", "--verbose"]
