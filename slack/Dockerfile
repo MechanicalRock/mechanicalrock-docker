@@ -1,4 +1,4 @@
-# TODO - slim down
+# TODO - slim down - 770MB
 FROM ubuntu
 
 ENV SLACK_VERSION=3.3.1-amd64
@@ -18,5 +18,4 @@ RUN apt-get update && \
 
 USER $USER
 
-# ENTRYPOINT [ "slack" ]
-ENTRYPOINT [ "bash" ]
+ENTRYPOINT [ "slack" ]
