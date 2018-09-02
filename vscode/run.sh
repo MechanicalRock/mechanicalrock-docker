@@ -1,10 +1,9 @@
 #! /bin/bash
 
 set -e
-set -x
 
 BASEDIR="$( cd "$(dirname "$BASH_SOURCE")/.." ; pwd -P )"
-DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm "
+DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml up "
 
 code="$DOCKER_COMPOSE vscode"
 

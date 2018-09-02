@@ -25,7 +25,9 @@ RUN cp /usr/lib/x86_64-linux-gnu/libxcb.so.1 /usr/share/code/ \
  && sed -i 's/BIG-REQUESTS/_IG-REQUESTS/' /usr/share/code/libxcb.so.1 \
  && sed -i 's/BIG-REQUESTS/_IG-REQUESTS/' /usr/share/code/libxcb.so.1.1.0
 
-RUN apt-get install -y libx11-xcb-dev
+RUN apt-get install -y libx11-xcb-dev \
+                       libgl1 \
+                       libglvnd-dev
 
 ADD install-js.sh .
 RUN chmod +x install-js.sh
@@ -43,4 +45,7 @@ VOLUME /vscode-data
 
 WORKDIR /home/$USER/workspace
 
-ENTRYPOINT ["/usr/bin/code", "--verbose", "--user-data-dir", "/vscode-data"]
+COPY entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
+# ENTRYPOINT ["/usr/bin/code", "--verbose", "--user-data-dir", "/vscode-data"]
+ENTRYPOINT ["docker-entrypoint.sh"]
