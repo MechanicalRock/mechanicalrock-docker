@@ -12,7 +12,7 @@ source /path/to/setenv.sh
 
 Add it to your `.bash_profile` to add the aliases automatically on shell start
 
-# Constributing
+# Contributing
 
 ## Minimising Image Size
 
