@@ -1,8 +1,5 @@
 #! /bin/bash
 
-set -e 
-# BASEDIR="$( cd "$(dirname "$BASH_SOURCE")" ; pwd -P )"
-
 SCRIPT_DIR=$(realpath $0)
 BASEDIR="$( cd "$(dirname "$SCRIPT_DIR")" ; pwd -P )"
 
