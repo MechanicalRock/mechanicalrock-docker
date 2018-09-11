@@ -57,8 +57,8 @@ services:
       image: mechanicalrock/docker-npm:8.10
       volumes:
         - ${PWD}:/app
-        - ~/.aws/:/root/.aws
-        - ~/.ssh:/root/.ssh
+        - ~/.aws/:/home/node/.aws
+        - ~/.ssh:/home/node/.ssh
       environment:
         - AWS_ACCESS_KEY_ID
         - AWS_SECRET_ACCESS_KEY
@@ -66,6 +66,16 @@ services:
         - AWS_SESSION_TOKEN
         - AWS_SECURITY_TOKEN
   psql:
+    image: postgres:9.6.7
+    environment:
+      - PG_USER
+      - PG_PASSWORD
+    network_mode: host
+    entrypoint:
+        - psql 
+        - -h 
+        - localhost
+  psql-osx:
     image: postgres:9.6.7
     environment:
       - PG_USER
@@ -127,4 +137,15 @@ services:
     working_dir: /app
     image: mechanicalrock/docker-cfn_nag
     volumes:
+      - ${PWD}:/app
+  gimp:
+    build:
+        context: gimp
+        dockerfile: Dockerfile
+    working_dir: /app
+    image: mechnicalrock/docker-gimp
+    environment:
+      - DISPLAY=unix$DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
       - ${PWD}:/app
