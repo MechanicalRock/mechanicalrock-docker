@@ -14,8 +14,9 @@ services:
         - AWS_SECURITY_TOKEN
       volumes:
         - ${PWD}:/app
-        - ~/.aws:/root/.aws
-        - ~/.ssh:/root/.ssh
+        - ~/.aws:/come/dev/.aws
+        - ~/.ssh:/home/dev/.ssh
+        - ~/.fedcred.config:/home/dev/fedcred.config
   aws:
       build:
         context: aws-cli
