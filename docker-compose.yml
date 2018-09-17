@@ -14,26 +14,9 @@ services:
         - AWS_SECURITY_TOKEN
       volumes:
         - ${PWD}:/app
-        - ~/.aws:/come/dev/.aws
+        - ~/.aws:/home/dev/.aws
         - ~/.ssh:/home/dev/.ssh
         - ~/.fedcred.config:/home/dev/fedcred.config
-  aws:
-      build:
-        context: aws-cli
-        dockerfile: Dockerfile
-      image: mechanicalrock/docker-aws-cli
-      entrypoint: aws
-      environment:
-        - AWS_ACCESS_KEY_ID
-        - AWS_SECRET_ACCESS_KEY
-        - AWS_PROFILE
-        - AWS_SESSION_TOKEN
-        - AWS_SECURITY_TOKEN
-        - AWS_DFAULT_REGION
-      volumes:
-        - ${PWD}:/app
-        - ~/.aws:/root/.aws
-        - ~/.ssh:/root/.ssh
   cfn-lint:
       build:
         context: cfn-lint

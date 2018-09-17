@@ -12,10 +12,10 @@ WORKDIR /setup
 ADD ./pip-install.sh .
 RUN ./pip-install.sh awscli fedcred
 
-# ENV USER=dev
-# RUN useradd -m $USER
+ENV USER=dev
+RUN addgroup -g 1000 -S $USER && adduser -u 1000 -S $USER -h /home/dev -G $USER
 
-# USER $USER
+USER $USER
 
 WORKDIR /app
 
