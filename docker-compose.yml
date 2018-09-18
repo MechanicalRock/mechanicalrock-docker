@@ -16,7 +16,6 @@ services:
         - ${PWD}:/app
         - ~/.aws:/home/dev/.aws
         - ~/.ssh:/home/dev/.ssh
-        - ~/.fedcred.config:/home/dev/fedcred.config
   cfn-lint:
       build:
         context: cfn-lint
