@@ -110,6 +110,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - /etc/localtime:/etc/localtime:ro
       - ~/.config/Slack:/home/dev/.config/Slack
+      - ~/Downloads:/home/dev/Downloads
     devices:
       - /dev/snd
       - /dev/dri
