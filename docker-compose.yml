@@ -7,6 +7,7 @@ services:
       image: mechanicalrock/docker-aws-cli
       entrypoint: aws
       environment:
+        - AWS_DEFAULT_REGION
         - AWS_ACCESS_KEY_ID
         - AWS_SECRET_ACCESS_KEY
         - AWS_PROFILE
@@ -86,6 +87,8 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       # - .:/home/dev/workspace
       - ~/.vscode:/vscode-data
+      # Enable the use of Docker from within the container
+      - /var/run/docker.sock:/var/run/docker.sock
     command: 
       - /home/dev/workspace
   slack:
