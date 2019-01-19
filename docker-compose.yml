@@ -17,6 +17,25 @@ services:
         - ${PWD}:/app
         - ~/.aws:/home/dev/.aws
         - ~/.ssh:/home/dev/.ssh
+  sam:
+      build:
+        context: aws-sam
+        dockerfile: Dockerfile
+      image: mechanicalrock/docker-aws-sam
+      entrypoint: sam
+      environment:
+        - AWS_DEFAULT_REGION
+        - AWS_ACCESS_KEY_ID
+        - AWS_SECRET_ACCESS_KEY
+        - AWS_PROFILE
+        - AWS_SESSION_TOKEN
+        - AWS_SECURITY_TOKEN
+      volumes:
+        - ${PWD}:/app
+          #- ~/.aws:/home/dev/.aws
+          #- ~/.ssh:/home/dev/.ssh
+        - ~/.aws:/root/.aws
+        - ~/.ssh:/root/.ssh
   cfn-lint:
       build:
         context: cfn-lint
@@ -85,8 +104,9 @@ services:
       - USER=dev
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      # - .:/home/dev/workspace
-      - ~/.vscode:/vscode-data
+        #- .:/home/dev/workspace
+      #- ~/.vscode:/vscode-data
+      - /home/tim/data/projects/personal/dotfiles/vscode/dot_config/Code.symlink:/home/dev/.config/Code
       # Enable the use of Docker from within the container
       - /var/run/docker.sock:/var/run/docker.sock
     command: 
@@ -135,4 +155,20 @@ services:
       - DISPLAY=unix$DISPLAY
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ${PWD}:/app
+  chrome:
+    privileged: true
+    build:
+      context: chrome
+      dockerfile: Dockerfile
+    image: mechanicalrock/docker-chrome
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /etc/localtime:/etc/localtime:ro
+      - ~/.config/Slack:/home/dev/.config/Slack
+      - ~/Downloads:/home/dev/Downloads
+    devices:
+      - /dev/snd
+      - /dev/dri
+      - /dev/video0
+    environment:
+      - DISPLAY=unix$DISPLAY

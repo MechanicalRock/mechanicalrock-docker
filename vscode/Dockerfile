@@ -33,6 +33,8 @@ ADD install-js.sh .
 RUN chmod +x install-js.sh
 RUN /install-js.sh
 
+ADD install-docker.sh /
+RUN chmod +x /install-docker.sh && /install-docker.sh
 USER $USER
 
 WORKDIR /home/$USER/setup
@@ -46,6 +48,13 @@ VOLUME /vscode-data
 WORKDIR /home/$USER/workspace
 
 COPY entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
+USER root
+RUN usermod -aG docker $USER
+USER $USER
+
+
+
 
 # ENTRYPOINT ["/usr/bin/code", "--verbose", "--user-data-dir", "/vscode-data"]
 ENTRYPOINT ["docker-entrypoint.sh"]

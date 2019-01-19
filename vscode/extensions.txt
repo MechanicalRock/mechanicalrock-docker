@@ -16,3 +16,5 @@ robinbentley.sass-indented
 sasa.vscode-sass-format
 steoates.autoimport
 stevejpurves.cucumber
+Dart-Code.flutter
+Dart-Code.dart-code
