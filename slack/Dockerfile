@@ -3,7 +3,7 @@ FROM debian:stretch-slim
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-ENV SLACK_VERSION=3.3.1-amd64
+ENV SLACK_VERSION=3.3.7-amd64
 
 ENV USER=dev
 RUN useradd -m $USER
