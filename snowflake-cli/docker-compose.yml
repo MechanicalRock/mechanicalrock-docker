@@ -1,0 +1,12 @@
+version: "2"
+services:
+    snowflake:
+        env_file:
+            - snowflake.env
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                SNOWFLAKE_DOWNLOAD: $SNOWFLAKE_DOWNLOAD
+        volumes:
+            - ./data:/app/data
