@@ -3,11 +3,11 @@
 osx='Darwin'
 if [[ uname -eq $osx ]]
 then
-	BASEDIR="$( cd "$(dirname "$1")" ; pwd -P )"
+	SCRIPT_DIR="${BASH_SOURCE[0]}"
 else
 	SCRIPT_DIR=$(realpath $0)
-	BASEDIR="$( cd "$(dirname "$SCRIPT_DIR")" ; pwd -P )"
 fi
+BASEDIR="$( cd "$(dirname "$SCRIPT_DIR")" ; pwd -P )"
 
 DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm "
 
