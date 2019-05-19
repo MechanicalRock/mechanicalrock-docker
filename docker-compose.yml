@@ -70,6 +70,24 @@ services:
         - AWS_SECURITY_TOKEN
       ports:
         - 3000:3000
+  npx:
+      build:
+        context: npm
+        dockerfile: Dockerfile
+      working_dir: /app
+      image: mechanicalrock/docker-npm:8.10
+      volumes:
+        - ${PWD}:/app
+        - ~/.aws/:/home/node/.aws
+        - ~/.ssh:/home/node/.ssh
+      entrypoint:
+        - npx
+      environment:
+        - AWS_ACCESS_KEY_ID
+        - AWS_SECRET_ACCESS_KEY
+        - AWS_PROFILE
+        - AWS_SESSION_TOKEN
+        - AWS_SECURITY_TOKEN
   psql:
     image: postgres:9.6.7
     environment:
