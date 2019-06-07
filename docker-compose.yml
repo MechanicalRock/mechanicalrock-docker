@@ -62,32 +62,38 @@ services:
         - ${PWD}:/app
         - ~/.aws/:/home/node/.aws
         - ~/.ssh:/home/node/.ssh
+        - ~/.gitconfig:/home/node/.gitconfig
+        - ~/.gitconfig.local:/home/node/.gitconfig.local
       environment:
         - AWS_ACCESS_KEY_ID
         - AWS_SECRET_ACCESS_KEY
         - AWS_PROFILE
         - AWS_SESSION_TOKEN
         - AWS_SECURITY_TOKEN
+        - SNYK_TOKEN
       ports:
         - 3000:3000
+>>>>>>> Add VSCode for .NetCore, additional vscode tweaks
   npx:
       build:
         context: npm
         dockerfile: Dockerfile
       working_dir: /app
-      image: mechanicalrock/docker-npm:8.10
+      image: mechanicalrock/docker-npx:8.10
       volumes:
         - ${PWD}:/app
         - ~/.aws/:/home/node/.aws
         - ~/.ssh:/home/node/.ssh
       entrypoint:
         - npx
+      entrypoint: npx
       environment:
         - AWS_ACCESS_KEY_ID
         - AWS_SECRET_ACCESS_KEY
         - AWS_PROFILE
         - AWS_SESSION_TOKEN
         - AWS_SECURITY_TOKEN
+        - SNYK_TOKEN
   psql:
     image: postgres:9.6.7
     environment:
@@ -126,6 +132,26 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - .:/home/dev/workspace
       #- ~/.vscode:/vscode-data
+      - /home/tim/data/projects/personal/dotfiles/vscode/dot_config/Code.symlink:/home/dev/.config/Code
+      # Enable the use of Docker from within the container
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.ssh:/home/dev/.ssh
+      - ~/.gitconfig:/home/dev/.gitconfig
+      - ~/.gitconfig.local:/home/dev/.gitconfig.local
+    command: 
+      - /home/dev/workspace
+  vscode-nc:
+    build:
+      context: vscode-nc
+      dockerfile: Dockerfile
+    environment:
+      - DISPLAY=$DISPLAY
+      - USER=dev
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+        #- .:/home/dev/workspace
+      #- ~/.vscode:/vscode-data
+      - ~/.nuget/:/home/dev/.nuget/
       - /home/tim/data/projects/personal/dotfiles/vscode/dot_config/Code.symlink:/home/dev/.config/Code
       # Enable the use of Docker from within the container
       - /var/run/docker.sock:/var/run/docker.sock

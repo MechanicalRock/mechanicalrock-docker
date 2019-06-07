@@ -18,4 +18,4 @@ steoates.autoimport
 stevejpurves.cucumber
 aws-amplify.aws-amplify-vscode
 amazonwebservices.aws-toolkit-vscode
-
+ms-vscode.csharp

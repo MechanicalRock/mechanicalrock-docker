@@ -35,6 +35,12 @@ RUN /install-js.sh
 
 ADD install-docker.sh /
 RUN chmod +x /install-docker.sh && /install-docker.sh
+
+# Install .net-core
+ADD install-netcore.sh .
+RUN chmod +x install-netcore.sh
+RUN /install-netcore.sh
+
 USER $USER
 
 WORKDIR /home/$USER/setup
@@ -50,7 +56,6 @@ WORKDIR /home/$USER/workspace
 COPY entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 USER root
-RUN apt-get update && apt-get install -y python-pip
 RUN usermod -aG docker $USER
 USER $USER
 
