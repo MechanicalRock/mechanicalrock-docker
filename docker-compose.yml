@@ -73,7 +73,6 @@ services:
         - SNYK_TOKEN
       ports:
         - 3000:3000
->>>>>>> Add VSCode for .NetCore, additional vscode tweaks
   npx:
       build:
         context: npm
