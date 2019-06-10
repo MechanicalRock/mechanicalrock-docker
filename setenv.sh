@@ -1,11 +1,13 @@
 #! /bin/bash
 
 osx='Darwin'
-if [[ uname -eq $osx ]]
+if [[ uname == $osx ]]
 then
 	SCRIPT_DIR="${BASH_SOURCE[0]}"
+  echo "SCRIPT_DIR_OSX=${SCRIPT_DIR}"
 else
 	SCRIPT_DIR=$(realpath $0)
+  echo "SCRIPT_DIR=${SCRIPT_DIR}"
 fi
 BASEDIR="$( cd "$(dirname "$SCRIPT_DIR")" ; pwd -P )"
 
