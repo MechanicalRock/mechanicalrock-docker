@@ -129,8 +129,8 @@ services:
       - USER=dev
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - .:/home/dev/workspace
-      #- ~/.vscode:/vscode-data
+      # - .:/home/dev/workspace
+      # - ~/.vscode:/vscode-data
       - /home/tim/data/projects/personal/dotfiles/vscode/dot_config/Code.symlink:/home/dev/.config/Code
       # Enable the use of Docker from within the container
       - /var/run/docker.sock:/var/run/docker.sock
