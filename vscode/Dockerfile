@@ -1,10 +1,6 @@
 FROM ubuntu
 
 ENV USER=dev
-# ENV GROUP=developers
-
-# RUN groupadd $GROUP
-# RUN useradd -m -G $GROUP $USER
 RUN useradd -m $USER
 
 RUN apt-get update \
@@ -35,6 +31,10 @@ RUN /install-js.sh
 
 ADD install-docker.sh /
 RUN chmod +x /install-docker.sh && /install-docker.sh
+
+ADD install-awscli.sh /
+RUN chmod +x /install-awscli.sh && /install-awscli.sh
+
 USER $USER
 
 WORKDIR /home/$USER/setup
@@ -50,12 +50,7 @@ WORKDIR /home/$USER/workspace
 COPY entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 USER root
-RUN apt-get update && apt-get install -y python-pip
 RUN usermod -aG docker $USER
 USER $USER
 
-
-
-
-# ENTRYPOINT ["/usr/bin/code", "--verbose", "--user-data-dir", "/vscode-data"]
 ENTRYPOINT ["docker-entrypoint.sh"]

@@ -1,4 +1,4 @@
-version: '2'
+version: "2.3"
 services:
   aws:
       build:
@@ -127,6 +127,7 @@ services:
     environment:
       - DISPLAY=$DISPLAY
       - USER=dev
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/dev/.local/bin
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       # - .:/home/dev/workspace
@@ -137,8 +138,14 @@ services:
       - ~/.ssh:/home/dev/.ssh
       - ~/.gitconfig:/home/dev/.gitconfig
       - ~/.gitconfig.local:/home/dev/.gitconfig.local
+      - ~/.aws:/home/dev/.aws
     command: 
       - /home/dev/workspace
+    # Requires docker-compose v2.4
+    mem_limit: 2048m
+    user: "${CURRENT_UID}"
+    ports:
+      - "13000:3000"
   vscode-nc:
     build:
       context: vscode-nc

@@ -10,7 +10,7 @@ else
 fi
 BASEDIR="$( cd "$(dirname "$SCRIPT_DIR")" ; pwd -P )"
 
-DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm "
+DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm --service-ports"
 
 alias aws="$DOCKER_COMPOSE aws"
 alias sam="$DOCKER_COMPOSE sam"

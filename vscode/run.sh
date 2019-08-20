@@ -3,11 +3,13 @@
 set -e
 
 BASEDIR="$( cd "$(dirname "$BASH_SOURCE")/.." ; pwd -P )"
-DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm "
+DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm --service-ports "
 
 code="$DOCKER_COMPOSE vscode"
 
 path="${1/#\~/$HOME}"
+
+export CURRENT_UID="$(id -u):$(cut -d: -f3 < <(getent group docker))"
 
 if [[ -d $path ]]
 then

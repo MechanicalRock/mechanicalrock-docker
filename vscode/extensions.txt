@@ -3,7 +3,6 @@ Orta.vscode-jest
 PeterJausovec.vscode-docker
 christian-kohler.npm-intellisense
 christian-kohler.path-intellisense
-danielthielking.aws-cloudformation-yaml
 eg2.tslint
 eamodio.gitlens
 github.vscode-pull-request-github
@@ -18,4 +17,6 @@ steoates.autoimport
 stevejpurves.cucumber
 aws-amplify.aws-amplify-vscode
 amazonwebservices.aws-toolkit-vscode
-
+ms-vscode-remote.remote-containers
+threadheap.serverless-ide-vscode
+aws-scripting-guy.cform
