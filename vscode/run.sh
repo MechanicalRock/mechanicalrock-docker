@@ -3,7 +3,7 @@
 set -e
 
 BASEDIR="$( cd "$(dirname "$BASH_SOURCE")/.." ; pwd -P )"
-DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm --service-ports "
+DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm --service-ports -d "
 
 code="$DOCKER_COMPOSE vscode"
 
@@ -14,7 +14,7 @@ export CURRENT_UID="$(id -u):$(cut -d: -f3 < <(getent group docker))"
 if [[ -d $path ]]
 then
     path=$(realpath $path)
-    $DOCKER_COMPOSE -v "$path:/home/dev/workspace" vscode . &
+    $DOCKER_COMPOSE -v "$path:/home/dev/workspace" vscode . 
 
 elif [[ -f $path ]]
 then
@@ -26,5 +26,5 @@ then
     # pwd
     $DOCKER_COMPOSE -v "$parent_dir:/home/dev/workspace" vscode  $(basename $(realpath $path)) &
 else
-    $code &
+    $code & >/dev/null 2>&1
 fi

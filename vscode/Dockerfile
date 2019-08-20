@@ -43,6 +43,12 @@ ADD extensions.txt .
 
 RUN for extension in `cat extensions.txt`; do /usr/bin/code --install-extension $extension; done;
 
+# Provides a 2-stage update, for faster bulding
+# Move extensions from extensions2.txt to extensions.txt once built
+ADD extensions2.txt .
+
+RUN for extension in `cat extensions2.txt`; do /usr/bin/code --install-extension $extension; done;
+
 VOLUME /vscode-data
 
 WORKDIR /home/$USER/workspace
