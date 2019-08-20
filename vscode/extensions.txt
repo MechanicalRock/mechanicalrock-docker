@@ -20,3 +20,4 @@ amazonwebservices.aws-toolkit-vscode
 ms-vscode-remote.remote-containers
 threadheap.serverless-ide-vscode
 aws-scripting-guy.cform
+paulshestakov.aws-step-functions-constructor
