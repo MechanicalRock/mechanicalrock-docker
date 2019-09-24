@@ -127,7 +127,7 @@ services:
     environment:
       - DISPLAY=$DISPLAY
       - USER=dev
-      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/dev/.local/bin
+      - PATH=/home/dev/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       # - .:/home/dev/workspace

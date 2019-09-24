@@ -1,7 +1,9 @@
 #! /bin/bash
 
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-
-python get-pip.py
+apt-get install -y python-pip python3-pip
 
 pip install awscli
+
+pip install aws-sam-cli
+
+pip install cfn-lint

@@ -1,6 +1,6 @@
 IBM.output-colorizer
 Orta.vscode-jest
-PeterJausovec.vscode-docker
+ms-azuretools.vscode-docker
 christian-kohler.npm-intellisense
 christian-kohler.path-intellisense
 eg2.tslint
@@ -11,7 +11,7 @@ ms-python.python
 ms-vsliveshare.vsliveshare
 rid9.datetime
 robertohuertasm.vscode-icons
-robinbentley.sass-indented
+syler.sass-indented
 sasa.vscode-sass-format
 steoates.autoimport
 stevejpurves.cucumber
@@ -21,3 +21,4 @@ ms-vscode-remote.remote-containers
 threadheap.serverless-ide-vscode
 aws-scripting-guy.cform
 paulshestakov.aws-step-functions-constructor
+ms-vscode.vscode-typescript-tslint-plugin
