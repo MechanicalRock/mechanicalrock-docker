@@ -65,6 +65,7 @@ services:
         - ~/.gitconfig:/home/node/.gitconfig
         - ~/.gitconfig.local:/home/node/.gitconfig.local
       environment:
+        - AWS_DEFAULT_REGION
         - AWS_ACCESS_KEY_ID
         - AWS_SECRET_ACCESS_KEY
         - AWS_PROFILE
@@ -121,6 +122,7 @@ services:
     volumes:
       - ~/.ssh:/root/.ssh
   vscode:
+    ipc: host
     build:
       context: vscode
       dockerfile: Dockerfile
