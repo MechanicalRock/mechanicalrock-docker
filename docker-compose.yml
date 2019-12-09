@@ -64,6 +64,7 @@ services:
         - ~/.ssh:/home/node/.ssh
         - ~/.gitconfig:/home/node/.gitconfig
         - ~/.gitconfig.local:/home/node/.gitconfig.local
+        - ~/.npmrc:/home/node/.npmrc
       environment:
         - AWS_DEFAULT_REGION
         - AWS_ACCESS_KEY_ID
@@ -84,6 +85,7 @@ services:
         - ${PWD}:/app
         - ~/.aws/:/home/node/.aws
         - ~/.ssh:/home/node/.ssh
+        - ~/.npmrc:/home/node/.npmrc
       entrypoint:
         - npx
       entrypoint: npx
@@ -132,7 +134,7 @@ services:
       - PATH=/home/dev/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      # - .:/home/dev/workspace
+      # - .:/home/dev/data/projects
       # - ~/.vscode:/vscode-data
       - /home/tim/data/projects/personal/dotfiles/vscode/dot_config/Code.symlink:/home/dev/.config/Code
       # Enable the use of Docker from within the container
@@ -141,6 +143,7 @@ services:
       - ~/.gitconfig:/home/dev/.gitconfig
       - ~/.gitconfig.local:/home/dev/.gitconfig.local
       - ~/.aws:/home/dev/.aws
+      - ~/.npmrc:/home/dev/.npmrc
     command: 
       - /home/dev/workspace
     # Requires docker-compose v2.4
