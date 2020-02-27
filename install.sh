@@ -14,6 +14,11 @@ DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm "
 cat <<EOM >$HOME/bin/aws
 	$DOCKER_COMPOSE aws \$@
 EOM
+
+cat <<EOM >$HOME/bin/aws2
+	$DOCKER_COMPOSE aws2 \$@
+EOM
+
 cat <<EOM >$HOME/bin/sam
 	$DOCKER_COMPOSE sam \$@
 EOM
