@@ -161,6 +161,8 @@ services:
       - ~/.gitconfig.local:/home/dev/.gitconfig.local
       - ~/.aws:/home/dev/.aws
       - ~/.npmrc:/home/dev/.npmrc
+      # Add GPG keyring for GitHub commit signing.
+      - ~/.gnupg:/home/dev/.gnupg
     command: 
       - /home/dev/workspace
     # Requires docker-compose v2.4

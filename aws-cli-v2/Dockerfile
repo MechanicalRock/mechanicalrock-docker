@@ -25,7 +25,8 @@ RUN curl "$INSTALL_PKG" -o "awscliv2.zip" && \
     gpg --import ./gpg.key && \
     curl -o awscliv2.sig "${INSTALL_PKG}.sig" && \
     gpg --verify awscliv2.sig awscliv2.zip
-  
+
+RUN apt-get install less  
 
 ENV USER=dev
 # RUN addgroup -g 1000 -S $USER && adduser -u 1000 -S $USER -h /home/dev -G $USER

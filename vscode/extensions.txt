@@ -1,3 +1,4 @@
+streetsidesoftware.code-spell-checker
 IBM.output-colorizer
 Orta.vscode-jest
 ms-azuretools.vscode-docker
@@ -22,3 +23,4 @@ threadheap.serverless-ide-vscode
 aws-scripting-guy.cform
 paulshestakov.aws-step-functions-constructor
 ms-vscode.vscode-typescript-tslint-plugin
+hediet.vscode-drawio

@@ -32,8 +32,10 @@ RUN /install-js.sh
 ADD install-docker.sh /
 RUN chmod +x /install-docker.sh && /install-docker.sh
 
-ADD install-awscli.sh /
-RUN chmod +x /install-awscli.sh && /install-awscli.sh
+WORKDIR /setup/aws-cli
+ADD install-awscli-v2.sh .
+COPY awscli/gpg.key .
+RUN chmod +x ./install-awscli-v2.sh && ./install-awscli-v2.sh
 
 USER $USER
 
