@@ -32,6 +32,9 @@ RUN /install-js.sh
 ADD install-docker.sh /
 RUN chmod +x /install-docker.sh && /install-docker.sh
 
+ADD install-python.sh /
+RUN chmod +x /install-python.sh && /install-python.sh
+
 WORKDIR /setup/aws-cli
 ADD install-awscli-v2.sh .
 COPY awscli/gpg.key .

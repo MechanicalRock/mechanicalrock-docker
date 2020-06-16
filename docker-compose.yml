@@ -149,6 +149,7 @@ services:
       - DISPLAY=$DISPLAY
       - USER=dev
       - PATH=/home/dev/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - SNYK_TOKEN=$SNYK_TOKEN
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       # - .:/home/dev/data/projects
