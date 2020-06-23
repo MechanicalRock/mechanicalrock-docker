@@ -35,6 +35,9 @@ RUN chmod +x /install-docker.sh && /install-docker.sh
 ADD install-python.sh /
 RUN chmod +x /install-python.sh && /install-python.sh
 
+ADD intall-git-remote-codecommit.sh /
+RUN chmod +x /intall-git-remote-codecommit.sh && /intall-git-remote-codecommit.sh
+
 WORKDIR /setup/aws-cli
 ADD install-awscli-v2.sh .
 COPY awscli/gpg.key .
