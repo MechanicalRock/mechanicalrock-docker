@@ -24,3 +24,5 @@ aws-scripting-guy.cform
 paulshestakov.aws-step-functions-constructor
 ms-vscode.vscode-typescript-tslint-plugin
 hediet.vscode-drawio
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
