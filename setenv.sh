@@ -8,7 +8,7 @@ then
 else
 	SCRIPT_DIR=$(realpath $0)
 fi
-BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd -P )"
+BASEDIR="$( cd "$( dirname "$SCRIPT_DIR" )" >/dev/null 2>&1 && pwd -P )"
 
 DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm --service-ports"
 
