@@ -1,14 +1,14 @@
 #! /bin/bash
 
 osx='Darwin'
-if [[ uname == $osx ]]
+if [[ `uname` == $osx ]]
 then
   echo "OSX environment detected..."
 	SCRIPT_DIR="${BASH_SOURCE[0]}"
 else
 	SCRIPT_DIR=$(realpath $0)
 fi
-BASEDIR="$( cd "$(dirname "$SCRIPT_DIR")" ; pwd -P )"
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd -P )"
 
 DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm --service-ports"
 
