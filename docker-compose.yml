@@ -47,6 +47,7 @@ services:
         - AWS_PROFILE
         - AWS_SESSION_TOKEN
         - AWS_SECURITY_TOKEN
+        - SAM_CLI_TELEMETRY=0
       volumes:
         - ${PWD}:/app
           #- ~/.aws:/home/dev/.aws
@@ -150,6 +151,7 @@ services:
       - USER=dev
       - PATH=/home/dev/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       - SNYK_TOKEN=$SNYK_TOKEN
+      - SAM_CLI_TELEMETRY=0
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       # - .:/home/dev/data/projects
