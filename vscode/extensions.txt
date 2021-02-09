@@ -27,3 +27,6 @@ hediet.vscode-drawio
 dbaeumer.vscode-eslint
 esbenp.prettier-vscode
 snyk-security.vscode-vuln-cost
+hbenl.vscode-test-explorer
+hbenl.vscode-mocha-test-adapter
+

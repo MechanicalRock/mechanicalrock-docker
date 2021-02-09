@@ -38,6 +38,9 @@ RUN chmod +x /install-python.sh && /install-python.sh
 ADD intall-git-remote-codecommit.sh /
 RUN chmod +x /intall-git-remote-codecommit.sh && /intall-git-remote-codecommit.sh
 
+ADD install-chromium.sh /
+RUN chmod +x /install-chromium.sh && /install-chromium.sh
+
 WORKDIR /setup/aws-cli
 ADD install-awscli-v2.sh .
 COPY awscli/gpg.key .
@@ -57,14 +60,18 @@ ADD extensions2.txt .
 
 RUN for extension in `cat extensions2.txt`; do /usr/bin/code --install-extension $extension; done;
 
+
 VOLUME /vscode-data
 
 WORKDIR /home/$USER/workspace
 
 COPY entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
+
 USER root
 RUN usermod -aG docker $USER
+ADD install-browser.sh /
+RUN chmod +x /install-browser.sh && /install-browser.sh
 USER $USER
 
 ENTRYPOINT ["docker-entrypoint.sh"]

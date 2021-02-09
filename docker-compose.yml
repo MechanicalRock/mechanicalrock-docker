@@ -2,23 +2,6 @@ version: "2.3"
 services:
   aws:
       build:
-        context: aws-cli
-        dockerfile: Dockerfile
-      image: mechanicalrock/docker-aws-cli
-      entrypoint: aws
-      environment:
-        - AWS_DEFAULT_REGION
-        - AWS_ACCESS_KEY_ID
-        - AWS_SECRET_ACCESS_KEY
-        - AWS_PROFILE
-        - AWS_SESSION_TOKEN
-        - AWS_SECURITY_TOKEN
-      volumes:
-        - ${PWD}:/app
-        - ~/.aws:/home/dev/.aws
-        - ~/.ssh:/home/dev/.ssh
-  aws2:
-      build:
         context: aws-cli-v2
         dockerfile: Dockerfile
       image: mechanicalrock/docker-aws-cli-v2
@@ -33,7 +16,6 @@ services:
       volumes:
         - ${PWD}:/app
         - ~/.aws:/home/dev/.aws
-        - ~/.ssh:/home/dev/.ssh
   sam:
       build:
         context: aws-sam
@@ -151,10 +133,13 @@ services:
       - USER=dev
       - PATH=/home/dev/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       - SNYK_TOKEN=$SNYK_TOKEN
+        # aws-sam-cli environment variables
       - SAM_CLI_TELEMETRY=0
+      - LC_ALL=C.UTF-8
+      - LANG=C.UTF-8
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      # - .:/home/dev/data/projects
+      - ~/data/projects:/home/dev/data/projects
       # - ~/.vscode:/vscode-data
       - /home/tim/data/projects/personal/dotfiles/vscode/dot_config/Code.symlink:/home/dev/.config/Code
       # Enable the use of Docker from within the container
@@ -164,6 +149,9 @@ services:
       - ~/.gitconfig.local:/home/dev/.gitconfig.local
       - ~/.aws:/home/dev/.aws
       - ~/.npmrc:/home/dev/.npmrc
+
+      # persist history
+      - ~/.bash_history_vscode:/home/dev/.bash_history
       # Add GPG keyring for GitHub commit signing.
       - ~/.gnupg:/home/dev/.gnupg
     command: 
@@ -182,10 +170,11 @@ services:
       - USER=dev
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-        #- .:/home/dev/workspace
+      - .:/home/dev/workspace
+      - ~/data/projects:/home/dev/data/projects
       #- ~/.vscode:/vscode-data
       - ~/.nuget/:/home/dev/.nuget/
-      - /home/tim/data/projects/personal/dotfiles/vscode/dot_config/Code.symlink:/home/dev/.config/Code
+      #- /home/tim/data/projects/personal/dotfiles/vscode/dot_config/Code.symlink:/home/dev/.config/Code
       # Enable the use of Docker from within the container
       - /var/run/docker.sock:/var/run/docker.sock
     command: 

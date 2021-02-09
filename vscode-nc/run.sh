@@ -3,9 +3,9 @@
 set -e
 
 BASEDIR="$( cd "$(dirname "$BASH_SOURCE")/.." ; pwd -P )"
-DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run "
+DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm --service-ports -d "
 
-code="$DOCKER_COMPOSE vscode"
+code="$DOCKER_COMPOSE vscode-nc"
 
 path="${1/#\~/$HOME}"
 

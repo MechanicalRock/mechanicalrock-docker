@@ -1,1 +1,1 @@
-
+kavod-io.vscode-jest-test-adapter

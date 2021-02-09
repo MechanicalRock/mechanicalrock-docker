@@ -12,3 +12,4 @@ curl "$INSTALL_PKG" -o "awscliv2.zip" && \
    curl -o awscliv2.sig "${INSTALL_PKG}.sig" && \
    gpg --verify awscliv2.sig awscliv2.zip
 
+pip install cfn-lint

@@ -1,9 +1,5 @@
 IBM.output-colorizer
 Orta.vscode-jest
-PeterJausovec.vscode-docker
-christian-kohler.npm-intellisense
-christian-kohler.path-intellisense
-danielthielking.aws-cloudformation-yaml
 eg2.tslint
 eamodio.gitlens
 github.vscode-pull-request-github
@@ -12,10 +8,5 @@ ms-python.python
 ms-vsliveshare.vsliveshare
 rid9.datetime
 robertohuertasm.vscode-icons
-robinbentley.sass-indented
-sasa.vscode-sass-format
-steoates.autoimport
 stevejpurves.cucumber
-aws-amplify.aws-amplify-vscode
-amazonwebservices.aws-toolkit-vscode
-ms-vscode.csharp
+ms-dotnettools.csharp
