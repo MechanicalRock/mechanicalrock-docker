@@ -1,4 +1,5 @@
 #! /bin/bash
+set -euo pipefail
 
 osx='Darwin'
 if [[ uname -eq $osx ]]
@@ -10,6 +11,10 @@ fi
 BASEDIR="$( cd "$(dirname "$SCRIPT_DIR")" ; pwd -P )"
 
 DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm "
+
+cat <<EOM >$HOME/bin/aws-sso-util
+	$DOCKER_COMPOSE aws-sso-util \$@
+EOM
 
 cat <<EOM >$HOME/bin/aws
 	$DOCKER_COMPOSE aws \$@

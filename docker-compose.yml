@@ -16,6 +16,12 @@ services:
       volumes:
         - ${PWD}:/app
         - ~/.aws:/home/dev/.aws
+  aws-sso-util:
+      build:
+        context: aws-sso-util
+        dockerfile: Dockerfile
+      volumes:
+        - ~/.aws:/home/dev/.aws
   sam:
       build:
         context: aws-sam
@@ -139,7 +145,7 @@ services:
       - LANG=C.UTF-8
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ~/data/projects:/home/dev/data/projects
+      # - ~/data/projects:/home/dev/data/projects
       # - ~/.vscode:/vscode-data
       - /home/tim/data/projects/personal/dotfiles/vscode/dot_config/Code.symlink:/home/dev/.config/Code
       # Enable the use of Docker from within the container
@@ -154,8 +160,8 @@ services:
       - ~/.bash_history_vscode:/home/dev/.bash_history
       # Add GPG keyring for GitHub commit signing.
       - ~/.gnupg:/home/dev/.gnupg
-    command: 
-      - /home/dev/workspace
+    # command: 
+    # - /home/dev/workspace
     # Requires docker-compose v2.4
     mem_limit: 2048m
     user: "${CURRENT_UID}"

@@ -29,4 +29,6 @@ esbenp.prettier-vscode
 snyk-security.vscode-vuln-cost
 hbenl.vscode-test-explorer
 hbenl.vscode-mocha-test-adapter
+yzhang.markdown-all-in-one
+kavod-io.vscode-jest-test-adapter
 
