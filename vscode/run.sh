@@ -3,6 +3,13 @@
 set -e
 
 BASEDIR="$( cd "$(dirname "$BASH_SOURCE")/.." ; pwd -P )"
+
+# Ensure seccomp file is available
+SECCOMP_DIR=~/.vscode/seccomp/
+mkdir -p ${SECCOMP_DIR}
+cp $BASEDIR/vscode/conf/seccomp/chrome.json ${SECCOMP_DIR}
+
+export MR_DOCKER_BASEDIR=$BASEDIR
 DOCKER_COMPOSE="docker-compose -f $BASEDIR/docker-compose.yml run --rm --service-ports -d "
 
 code="$DOCKER_COMPOSE vscode"

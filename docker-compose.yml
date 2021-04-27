@@ -134,6 +134,9 @@ services:
     build:
       context: vscode
       dockerfile: Dockerfile
+    security_opt:
+      # copied in run.sh to ensure the file is available in a consistent location on the host machine
+      - seccomp=${HOME}/.vscode/seccomp/chrome.json
     environment:
       - DISPLAY=$DISPLAY
       - USER=dev
