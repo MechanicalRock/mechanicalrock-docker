@@ -1,4 +1,5 @@
 #! /bin/bash
+set -euo pipefail
 
 for ARG in "$@"
 do

@@ -25,26 +25,9 @@ RUN apt-get install -y libx11-xcb-dev \
                        libgl1 \
                        libglvnd-dev
 
-ADD install-js.sh .
-RUN chmod +x install-js.sh
-RUN /install-js.sh
-
-ADD install-docker.sh /
-RUN chmod +x /install-docker.sh && /install-docker.sh
-
-ADD install-python.sh /
-RUN chmod +x /install-python.sh && /install-python.sh
-
-ADD intall-git-remote-codecommit.sh /
-RUN chmod +x /intall-git-remote-codecommit.sh && /intall-git-remote-codecommit.sh
-
-ADD install-chromium.sh /
-RUN chmod +x /install-chromium.sh && /install-chromium.sh
-
-WORKDIR /setup/aws-cli
-ADD install-awscli-v2.sh .
-COPY awscli/gpg.key .
-RUN chmod +x ./install-awscli-v2.sh && ./install-awscli-v2.sh
+WORKDIR /setup
+ADD setup/ .
+RUN chmod --recursive +x *.sh && /bin/bash -c ./install.sh && rm -rf /setup
 
 USER $USER
 
@@ -68,10 +51,10 @@ WORKDIR /home/$USER/workspace
 COPY entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 
-USER root
-RUN usermod -aG docker $USER
-ADD install-browser.sh /
-RUN chmod +x /install-browser.sh && /install-browser.sh
-USER $USER
+# USER root
+# RUN usermod -aG docker $USER
+# ADD install-browser.sh /
+# RUN chmod +x /install-browser.sh && /install-browser.sh
+# USER $USER
 
 ENTRYPOINT ["docker-entrypoint.sh"]

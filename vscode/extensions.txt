@@ -7,7 +7,6 @@ christian-kohler.path-intellisense
 eg2.tslint
 eamodio.gitlens
 github.vscode-pull-request-github
-kddejong.vscode-cfn-lint
 ms-python.python
 ms-vsliveshare.vsliveshare
 rid9.datetime
@@ -29,4 +28,6 @@ esbenp.prettier-vscode
 snyk-security.vscode-vuln-cost
 hbenl.vscode-test-explorer
 hbenl.vscode-mocha-test-adapter
+yzhang.markdown-all-in-one
+kavod-io.vscode-jest-test-adapter
 
