@@ -4,7 +4,6 @@ Orta.vscode-jest
 ms-azuretools.vscode-docker
 christian-kohler.npm-intellisense
 christian-kohler.path-intellisense
-eg2.tslint
 eamodio.gitlens
 github.vscode-pull-request-github
 ms-python.python
