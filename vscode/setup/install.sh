@@ -16,9 +16,6 @@ echo "Installing base tools: ${SCRIPT_DIR}"
 for INSTALL_SCRIPT in $(find ${SCRIPT_DIR} -name "install-*.sh")
 do
 	echo "install: ${INSTALL_SCRIPT}"
-	INSTALL_DIR=$(dirname $(realpath $INSTALL_SCRIPT))
-	cd $INSTALL_DIR
-	/bin/bash  ${INSTALL_SCRIPT}
-	cd ${SCRIPT_DIR}
+	/bin/bash ${INSTALL_SCRIPT}
 done
 
