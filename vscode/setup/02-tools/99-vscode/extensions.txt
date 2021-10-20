@@ -9,7 +9,6 @@ github.vscode-pull-request-github
 ms-python.python
 ms-vsliveshare.vsliveshare
 rid9.datetime
-robertohuertasm.vscode-icons
 syler.sass-indented
 sasa.vscode-sass-format
 steoates.autoimport
