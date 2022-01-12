@@ -1,4 +1,4 @@
-FROM node:8.10
+FROM node:14
 
 # Upgrade NPM
 RUN npm install -g npm

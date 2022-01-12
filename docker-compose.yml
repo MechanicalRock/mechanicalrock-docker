@@ -63,7 +63,7 @@ services:
         context: npm
         dockerfile: Dockerfile
       working_dir: /app
-      image: mechanicalrock/docker-npm:8.10
+      image: mechanicalrock/docker-npm
       volumes:
         - ${PWD}:/app
         - ~/.aws/:/home/node/.aws
@@ -131,6 +131,7 @@ services:
       - ~/.ssh:/root/.ssh
   vscode:
     ipc: host
+    image: mechanicalrock/docker-vscode
     build:
       context: vscode
       dockerfile: Dockerfile
