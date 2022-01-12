@@ -86,7 +86,7 @@ services:
         context: npm
         dockerfile: Dockerfile
       working_dir: /app
-      image: mechanicalrock/docker-npx:8.10
+      image: mechanicalrock/docker-npx
       volumes:
         - ${PWD}:/app
         - ~/.aws/:/home/node/.aws
