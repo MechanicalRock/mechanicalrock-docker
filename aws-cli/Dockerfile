@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:3-alpine
 
 RUN pip install awscli
 RUN apk add groff
