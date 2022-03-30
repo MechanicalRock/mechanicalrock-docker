@@ -167,7 +167,7 @@ services:
     # command: 
     # - /home/dev/workspace
     # Requires docker-compose v2.4
-    mem_limit: 2048m
+    mem_limit: 3072m
     user: "${CURRENT_UID}"
     ports:
       - "13000:3000"
