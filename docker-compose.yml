@@ -189,32 +189,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     command: 
       - /home/dev/workspace
-  slack:
-    build:
-      context: slack
-      dockerfile: Dockerfile
-    environment:
-      - DISPLAY=unix$DISPLAY
-      - USER=dev
-    # This requires version '2' of compose
-    # Was removed in verssion '3'
-    # Issue to re-add:
-    # see https://github.com/docker/cli/issues/1318
-    group_add:
-      # Run the container with the following additional groups to enable access to audio/video
-      - audio
-      - video
-    # Required - otherwise crash on login
-    ipc: "host"
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - /etc/localtime:/etc/localtime:ro
-      - ~/.config/Slack:/home/dev/.config/Slack
-      - ~/Downloads:/home/dev/Downloads
-    devices:
-      - /dev/snd
-      - /dev/dri
-      - /dev/video0
   cfn-nag:
     build:
         context: cfn-nag
@@ -223,30 +197,3 @@ services:
     image: mechanicalrock/docker-cfn_nag
     volumes:
       - ${PWD}:/app
-  gimp:
-    build:
-        context: gimp
-        dockerfile: Dockerfile
-    working_dir: /app
-    image: mechnicalrock/docker-gimp
-    environment:
-      - DISPLAY=unix$DISPLAY
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-  chrome:
-    privileged: true
-    build:
-      context: chrome
-      dockerfile: Dockerfile
-    image: mechanicalrock/docker-chrome
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - /etc/localtime:/etc/localtime:ro
-      - ~/.config/Slack:/home/dev/.config/Slack
-      - ~/Downloads:/home/dev/Downloads
-    devices:
-      - /dev/snd
-      - /dev/dri
-      - /dev/video0
-    environment:
-      - DISPLAY=unix$DISPLAY
