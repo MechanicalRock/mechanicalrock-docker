@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:14-bullseye-slim
 
 # Upgrade NPM
 RUN npm install -g npm

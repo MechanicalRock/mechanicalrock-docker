@@ -1,4 +1,4 @@
-FROM python:3.11.0a6-slim-buster
+FROM python:3.11-rc-alpine
 
 RUN pip install aws-sso-util
 
