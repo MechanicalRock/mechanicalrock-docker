@@ -1,4 +1,4 @@
-FROM python:3.11.0a5-alpine
+FROM python:3.11.0a6-alpine
 
 RUN apk add --no-cache bash gawk sed grep bc coreutils git
 RUN apk add --no-cache curl gcc
