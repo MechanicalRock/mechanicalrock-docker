@@ -1,4 +1,4 @@
-FROM ruby:slim
+FROM ruby:3-slim-bullseye
 
 RUN gem install cfn-nag
 
