@@ -1,8 +1,8 @@
 #! /bin/bash
 set -euo pipefail
 
-osx='Darwin'
-if [[ uname -eq $osx ]]
+OSX='Darwin'
+if [[ uname == "$OSX" ]]
 then
 	SCRIPT_DIR="${BASH_SOURCE[0]}"
 else
